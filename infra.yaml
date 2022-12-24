@@ -1,0 +1,30 @@
+Resources:
+  DataBucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: bucket-data-sagemaker-autopilot
+  SageMakerDomain:
+    Type: AWS::SageMaker::Domain
+    DependsOn: DataBucket
+    Properties: 
+      AuthMode: IAM
+      DefaultUserSettings: 
+        ExecutionRole: arn:aws:iam::623127157773:role/sagemaker-role
+      DomainName: DomainSatu
+      VpcId: vpc-8fb875e9
+      SubnetIds: 
+        - subnet-2c5cea4a
+  HerleySageMakerUser:
+    Type: AWS::SageMaker::UserProfile
+    Properties: 
+      DomainId: !GetAtt SageMakerDomain.DomainId
+      UserProfileName: herley
+Outputs:
+  SageMakerDomainID:
+    Value: !GetAtt
+      - SageMakerDomain
+      - DomainId
+  SageMakerDomainARN:
+    Value: !GetAtt
+      - SageMakerDomain
+      - DomainArn
