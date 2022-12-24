@@ -9,11 +9,11 @@ Resources:
     Properties: 
       AuthMode: IAM
       DefaultUserSettings: 
-        ExecutionRole: arn:aws:iam::623127157773:role/sagemaker-role
+        ExecutionRole: <ROLE ANDA>
       DomainName: DomainSatu
-      VpcId: vpc-8fb875e9
+      VpcId: <VPC-ANDA>
       SubnetIds: 
-        - subnet-2c5cea4a
+        - <SUBNET-ANDA>
   HerleySageMakerUser:
     Type: AWS::SageMaker::UserProfile
     Properties: 
